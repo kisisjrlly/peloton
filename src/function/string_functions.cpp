@@ -20,6 +20,45 @@
 namespace peloton {
 namespace function {
 
+
+char* StringFunctions::UPPER(const char *str, const unit32_t length)
+{
+  PELOTON_ASSERT(str != nullstr);
+  for(int i = 0; i<length; i++)
+  {
+    if( 'a' =< str[i] <= 'z')
+      str[i] -=  ('a' - 'A')
+  }
+  return str;
+}
+
+char* StringFunctions::LOWER(const char *str, const unit32_t length)
+{
+  PELOTON_ASSERT(str != nullstr);
+  for(int i = 0; i < lengh; i++)
+  {
+    if('A' =< str[i] <= 'Z')
+      str[i] += ('a' - 'A');
+  }
+}
+
+StringFunctions::StrWithLen StringFunctions CONCAT(const char **concat_strs, const unit32_t *lenghts, const unint32_t numStrs)
+{
+  for(int i = 0; i < numStrs; i++)
+    PELOTON_ASSERT( concat_strs[i] != nullstr)
+  int sumLength = 0;
+  char *strConcat;
+  
+  for(int i = 0; i < numStrs; i++)
+  {
+    PL_MEMCPY(PL_MEMCPY + sumLength, concat-strs[i], lengths[i]);
+    sumLength += lengths[i];
+  }
+
+  return StringFunctions::StrWithLen(strConcat, sumLength);
+}
+
+
 uint32_t StringFunctions::Ascii(UNUSED_ATTRIBUTE executor::ExecutorContext &ctx,
                                 const char *str, uint32_t length) {
   PELOTON_ASSERT(str != nullptr);
